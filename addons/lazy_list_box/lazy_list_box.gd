@@ -734,15 +734,27 @@ func _refresh_visible_items():
 			# OPTIMIZATION: Don't set focus_mode when hiding - unnecessary
 	active_items.clear()
 	
+	# Safety check: ensure item_pool exists and has the right size
+	if item_pool.size() == 0:
+		_create_item_pool()
+		if item_pool.size() == 0:
+			return  # Still no items, can't proceed
+	
 	# Calculate how many items we can actually show
 	var remaining_data = data_size - current_scroll_index
 	var items_to_show = mini(visible_item_count, remaining_data)
+	# Ensure we don't exceed the actual item_pool size
+	items_to_show = mini(items_to_show, item_pool.size())
 	
 	# Pre-resize active_items for optimal performance
 	active_items.resize(items_to_show)
 	
-	# Show items for current scroll position - optimized loop
+	# Show items for current scroll position - optimized loop with bounds checking
 	for i in items_to_show:
+		# Safety check: ensure index is valid for item_pool
+		if i >= item_pool.size():
+			break
+		
 		var data_index = current_scroll_index + i
 		var item = item_pool[i]  # Direct access instead of function call
 		
