@@ -72,10 +72,6 @@ func configure_item(index: int, data):
 	item_index = index
 	item_data = data
 	button.text = str(data)  # Display the data as button text
-
-# This is called by LazyListBox: to set the data
-func set_data(data):
-	item_data = data
 ```
 Don't forget to assign the `Button`
 ```
@@ -131,7 +127,6 @@ func _ready():
 - Godot 4.4+ 
 - Your item template must implement:
   - `configure_item(index: int, data)` method
-  - `set_data(data)` method
 
 ## Troubleshooting
 

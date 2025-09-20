@@ -75,7 +75,6 @@ func _ready():
 	var temp_instance = item_template.instantiate()
 	# Check if required methods exist
 	assert(temp_instance.has_method("configure_item"), "Your ItemTemplate needs a script with this function: `func configure_item(index: int, data):`")
-	assert(temp_instance.has_method("set_data"), "Your ItemTemplate needs a script with this function: `func set_data(data):`")
 	
 	# Clean up the temporary instance
 	temp_instance.queue_free()
@@ -778,8 +777,6 @@ func _configure_item(item: Control, index: int, item_data):
 	if not method_cache.has(key):
 		if item.has_method("configure_item"):
 			method_cache[key] = "configure_item"
-		elif item.has_method("set_data"):
-			method_cache[key] = "set_data"
 		else:
 			method_cache[key] = null
 	
