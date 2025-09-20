@@ -110,6 +110,9 @@ func _ready():
 ### Basic Operations
 - `set_data(data_array: Array)` - Set the data for the list
 - `refresh()` - Force refresh the entire list
+> [!IMPORTANT]  
+> `refresh()` only works for modifying existing data objects, not for adding/removing items from the array - use `set_data()` for array size changes.
+
 - `scroll_to_index(index: int)` - Scroll to specific data index
 - `scroll_to_end()` - Scroll to the end of the list
 
