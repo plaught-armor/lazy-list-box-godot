@@ -35,8 +35,8 @@ ItemTemplate (Button-Type)
 ```
 **Ensure: ItemTemplate is for this example a Button-Type.**
 
-**Recommended: The root node in your ItemTemplate should be always a Button so that focus calls work properly.**
-
+> [!TIP]  
+> **Recommended The root node in your ItemTemplate should be always a Button so that focus calls work properly.**
 
 Make sure the ItemTemplate node has:
 - The `Flat` property set to `true` in your inspector
@@ -109,9 +109,9 @@ func _ready():
 
 ### Basic Operations
 - `set_data(data_array: Array)` - Set the data for the list
-- `refresh()` - Force refresh the entire list
+- `refresh()` - while configure_item can refresh the current item.`refresh()` can "refresh" the entire list.
 > [!IMPORTANT]  
-> `refresh()` only works for modifying existing data objects, not for adding/removing items from the array - use `set_data()` for array size changes.
+> `refresh()` only works for modifying existing data objects, not for adding/removing items from the array - use `set_data()` for array size "refresh" changes. 
 
 - `scroll_to_index(index: int)` - Scroll to specific data index
 - `scroll_to_end()` - Scroll to the end of the list
