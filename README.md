@@ -1,5 +1,4 @@
 ![Example 1](screenshots/1.gif)
-<iframe width="400" height="225" src="https://www.youtube.com/embed/DwB_O6uEPPg" frameborder="0" allowfullscreen></iframe>
 # LazyListBox for Godot 4.4+
 
 A high-performance List-Box control that can handle 
@@ -8,6 +7,8 @@ elements and only displaying what's currently visible
 on screen instead of creating individual controls for
 every data entry, creating the illusion that you're scrolling
 through thousands of actual items. Leave a Star if you will ⭐
+
+https://www.youtube.com/watch?v=DwB_O6uEPPg
 
 ## Features
 - Lazy loading items
