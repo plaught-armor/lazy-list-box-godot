@@ -36,7 +36,7 @@ ItemTemplate (Button-Type)
 **Ensure: ItemTemplate is for this example a Button-Type.**
 
 > [!TIP]  
-> **Recommended The root node in your ItemTemplate should be always a Button so that focus calls work properly.**
+> **Recommended: The root node in your ItemTemplate should be always a Button so that focus calls work properly.**
 
 Make sure the ItemTemplate node has:
 - The `Flat` property set to `true` in your inspector
@@ -104,8 +104,8 @@ func _ready():
 ## Public API Methods
 
 ### Basic Operations
-- `set_data(data_array: Array)` - Set the data for the list
-- `refresh()` - while configure_item can refresh the current item.`refresh()` can "refresh" the entire list.
+- `set_data(data_array: Array)` - Use that to set the data and to refresh array size changes.
+- `refresh()` - `configure_item` refreshes your item while you scrolling, BUT `refresh()` can do that without scrolling. You need this in certain cases: e.g. You consum an inventory item, and you want to update the "Amount Label" without scrolling down/up.
 > [!IMPORTANT]  
 > `refresh()` only works for modifying existing data objects, not for adding/removing items from the array - use `set_data()` for array size "refresh" changes. 
 
