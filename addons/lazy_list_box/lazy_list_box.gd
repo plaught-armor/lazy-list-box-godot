@@ -26,8 +26,6 @@ var item_height: float = 0.0
 @onready var overlay_scroll_bar: VScrollBar = %VOverlayScrollBar
 @onready var content_container: VBoxContainer = %VBoxContainer
 
-
-
 # Data management
 var data: Array = []
 var item_pool: Array[Control] = []
@@ -40,6 +38,9 @@ var has_pending_data: bool = false
 
 # Signal emitted when LazyListBox is fully ready for use
 signal fully_ready
+
+# Signal emitted when new item is created
+signal item_created(item: Control)
 
 # OPTIMIZATION: HashSet for O(1) lookup instead of O(n) Array.has()
 var active_items_set: Dictionary = {}  # key = item, value = true
@@ -672,6 +673,8 @@ func _create_item_pool():
 			item.focus_exited.connect(_on_item_focus_exited.bind(item))
 			content_container.add_child(item)
 			item_pool[i] = item
+			# Tell the ui that a new item exists
+			item_created.emit(item)
 
 func _on_item_focus_entered(item: Control):
 	"""Handle when an item gains focus - establish virtual focus"""
