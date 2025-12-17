@@ -164,11 +164,17 @@ func _determine_item_height():
 		_configure_item(temp_item, 0, data[0])
 	
 	# Wait for proper layout
+	# Suggest the correct width to the item to calculate text wrapping height correctly
+	if content_container.size.x > 0:
+		temp_item.size.x = content_container.size.x
+
 	temp_item.force_update_transform()
 	await get_tree().process_frame
 	await get_tree().process_frame  # Sometimes needs 2 frames
 	
-	item_height = temp_item.size.y
+	# Use get_combined_minimum_size().y instead of size.y
+	# size.y often returns the cached editor design size before the container shrinks it
+	item_height = temp_item.get_combined_minimum_size().y
 	
 	temp_item.queue_free()
 	assert(temp_item.custom_minimum_size.y > 0, "Set minimum height in Inspector: Select your item_template `.tscn` -> Root Node -> Layout tab -> Custom Minimum Size -> IMPORTANT: set Y > 0")
@@ -974,3 +980,4 @@ func _on_child_button_pressed(button: Control, root_item: Control):
 		if data_index != -1:
 			_set_virtual_focus(data_index)
 			current_real_focused_item = root_item
+
