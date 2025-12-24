@@ -874,6 +874,12 @@ func get_virtual_focused_index() -> int:
 	"""Get the currently virtually focused data index (-1 if none)"""
 	return virtual_focused_data_index if has_virtual_focus else -1
 
+func grab_initial_focus():
+	"""Focus the first available or currently scrolled-to item"""
+	if data_size > 0:
+		# Focus the item at current scroll position (usually 0)
+		focus_item_at_data_index(current_scroll_index)
+
 func is_list_focused() -> bool:
 	"""Check if this LazyListBox has any kind of focus (virtual or real)"""
 	return has_virtual_focus
@@ -980,4 +986,3 @@ func _on_child_button_pressed(button: Control, root_item: Control):
 		if data_index != -1:
 			_set_virtual_focus(data_index)
 			current_real_focused_item = root_item
-

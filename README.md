@@ -117,6 +117,7 @@ func _ready():
 - `set_focus_preservation(enabled: bool)` - Enable/disable focus preservation
 - `get_virtual_focused_index() -> int` - Get currently focused data index
 - `is_list_focused() -> bool` - Check if list has focus
+- `grab_initial_focus()` - Focus the first available or currently scrolled-to/visible item
 
 ### Configuration
 - `set_auto_calculate_visible_count(enabled: bool)` - Toggle auto-calculation
