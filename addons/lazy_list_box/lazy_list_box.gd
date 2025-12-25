@@ -623,7 +623,10 @@ func _internal_set_data(new_data: Array):
 	"""Internal method to set data when fully initialized"""
 	data = new_data
 	data_size = new_data.size()  # Cache size for performance
-	_clear_virtual_focus()  # Reset all focus state
+	
+	# Only clear focus if the index is no longer valid for the new data size
+	if virtual_focused_data_index >= data_size:
+		_clear_virtual_focus()
 	
 	_update_scroll_range()
 	_refresh_visible_items()
