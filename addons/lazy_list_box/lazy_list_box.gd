@@ -13,7 +13,7 @@ signal item_created(item: Control)
 ## Will be calculated automatically if `auto_calculate_visible_count` is false
 @export var visible_item_count: int = 10
 ## Hide ScrollBar.
-@export var hide_scroll_bar: bool = true:
+@export var hide_scroll_bar: bool = false:
 	set(value):
 		if scroll_bar != null:
 			scroll_bar.visible = !value
