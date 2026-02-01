@@ -880,7 +880,6 @@ func _update_scroll_range() -> void:
 	is_updating_scrollbars = true
 
 	# Configure both scrollbars with identical settings
-	#var scrollbars: Array[VScrollBar] = [scroll_bar, overlay_scroll_bar]
 	for scrollbar: VScrollBar in [scroll_bar, overlay_scroll_bar]:
 		if scrollbar:
 			scrollbar.min_value = 0.0
