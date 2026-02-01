@@ -13,17 +13,14 @@ signal item_created(item: Control)
 ## Will be calculated automatically if `auto_calculate_visible_count` is false
 @export var visible_item_count: int = 10
 ## Hide ScrollBar.
-@export var hide_scroll_bar: bool = false:
+@export var hide_scroll_bar: bool = true:
 	set(value):
 		if scroll_bar != null:
-			scroll_bar.visible = !value
+			scroll_bar.visible = value
 		else:
-			ready.connect(func() -> void: scroll_bar.visible = !value, CONNECT_ONE_SHOT)
+			ready.connect(func() -> void: scroll_bar.visible = value, CONNECT_ONE_SHOT)
 	get:
 		return scroll_bar.visible
-@export var use_manual_input: bool = false:
-	set(value):
-		ready.connect(func() -> void: set_process_input(!value), CONNECT_ONE_SHOT)
 
 # NEW: Item height for intelligent calculation
 var item_height: float = 0.0
